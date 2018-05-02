@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/student.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>学生主页面</title>
+</head>
+
+
+<body>
+	<div id="vm">
+		<div class="repair_main_wrap">
+			<!--左边栏-->
+			<div class="repair_left_wrap">
+				<div class="repair_title">学生宿舍管理系统</div>
+				<div class="repair_icon">
+					<img src="./css/img/St_icon.png" alt="图片">
+				</div>
+				<div class="repair_name">学生</div>
+				<div class="repair_list_wrap <{if $active == 0}>active<{/if}>">
+					<a href="#info" role="tab" data-toggle="tab" aria-controls="info" aria-expanded="true">
+						<div class="repair_item">
+							<div class="repair_item_icon1">
+								<img src="./css/img/information.png" alt="">
+							</div>
+							<div class="repair_item_wz">
+								个人信息
+							</div>
+							<div class="repair_item_icon2">
+								<img src="./css/img/BS_arrow.png" alt="">
+							</div>
+						</div>
+					</a>
+					<a href="#dorm" role="tab" data-toggle="tab" aria-controls="dorm" aria-expanded="false">
+						<div class="repair_item <{if $active == 3}>active<{/if}>">
+							<div class="repair_item_icon1">
+								<img src="./css/img/information.png" alt="">
+							</div>
+							<div class="repair_item_wz <{if $active == 3 or $active == 6 or $active == 7 or $active == 8 }>active<{/if}>">
+								查询平台
+							</div>
+							<div class="repair_item_icon2">
+								<img src="./css/img/BS_arrow.png" alt="">
+							</div>
+						</div>
+					</a>
+					<a href="#repair" id="home-tab" role="tab" data-toggle="tab" aria-controls="repair" aria-expanded="false">
+						<div class="repair_item">
+							<div class="repair_item_icon1">
+								<img src="./css/img/mark.png" alt="">
+							</div>
+							<div class="repair_item_wz <{if $active != 3}>active<{/if}>">
+								登记平台
+							</div>
+							<div class="repair_item_icon2">
+								<img src="./css/img/BS_arrow.png" alt="">
+							</div>
+						</div>
+					</a>
+					<a href="#message" role="tab" data-toggle="tab" aria-controls="message" aria-expanded="false">
+						<div class="repair_item">
+							<div class="repair_item_icon1">
+								<img src="./css/img/information.png" alt="">
+							</div>
+							<div class="repair_item_wz">
+								发布留言
+							</div>
+							<div class="repair_item_icon2">
+								<img src="./css/img/BS_arrow.png" alt="">
+							</div>
+						</div>
+					</a>
+					<a href="#pint" role="tab" data-toggle="tab" aria-controls="pint" aria-expanded="false">
+						<div class="repair_item">
+							<div class="repair_item_icon1">
+								<img src="./css/img/announce.png" alt="">
+							</div>
+							<div class="repair_item_wz">
+								平台公告
+							</div>
+							<div class="repair_item_icon2">
+								<img src="./css/img/BS_arrow.png" alt="">
+							</div>
+						</div>
+					</a>
+					<a href="#changepwd" role="tab" data-toggle="tab" aria-controls="changepwd" aria-expanded="false">
+						<div class="repair_item">
+							<div class="repair_item_icon1">
+								<img src="./css/img/information.png" alt="">
+							</div>
+							<div class="repair_item_wz">
+								修改密码
+							</div>
+							<div class="repair_item_icon2">
+								<img src="./css/img/BS_arrow.png" alt="">
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="repair_exit_login">
+					<a href="out.php">
+						<sapn class="torrow">
+							< </sapn>退出登录
+					</a>
+				</div>
+			</div>
+
+			<!--右边栏-->
+			<div class="repair_right_wrap tab-content" id="myTabContent">
+				<!--个人信息-->
+				<div role="tabpanel" class="tab-pane fade <{if $active == 0}>active in<{/if}>" id="info" aria-labelledby="info-tab">
+					<form action="">
+						<div class="message-title">个人信息</div>
+						<div class="message-content-wrap">
+							<div class="message-content">
+								<div class="message-content-wz">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;</div>
+								<div class="message-content-inp">
+									<input type="text" class="message-content-input" id="info-name" value="<{$info[0].username}>" required disabled="disabled">
+								</div>
+							</div>
+							<div class="message-content">
+								<div class="message-content-wz">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp; </div>
+								<div class="message-content-inp">
+									<input type="text" class="message-content-input" id="info-id" value="<{$info[0].no}>" required disabled="disabled">
+								</div>
+							</div>
+							<div class="message-content">
+								<div class="message-content-wz">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp; </div>
+								<div class="message-content-inp">
+									<input type="text" class="message-content-input" id="info-sex" value="<{$info[0].sex}>" required disabled="disabled">
+								</div>
+							</div>
+							<div class="message-content">
+								<div class="message-content-wz">系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp; </div>
+								<div class="message-content-inp">
+									<input type="text" class="message-content-input" id="info-department" value="<{$info[0].department}>" required disabled="disabled">
+								</div>
+							</div>
+							<div class="message-content">
+								<div class="message-content-wz">班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;</div>
+								<div class="message-content-inp">
+									<input type="text" class="message-content-input" id="info-class" value="<{$info[0].class}>" maxlength="15" required>
+								</div>
+							</div>
+							<div class="message-content">
+								<div class="message-content-wz">宿&nbsp;舍&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp; </div>
+								<div class="message-content-inp">
+									<input type="text" class="message-content-input" id="info-dorm" value="<{$info[0].dormitory}>" maxlength="15" required>
+								</div>
+							</div>
+							<div class="message-content">
+								<div class="message-content-wz">入学年份&nbsp;&nbsp;&nbsp; </div>
+								<div class="message-content-inp">
+									<input type="date" class="message-content-input" id="info-year" value="<{$info[0].dates}>" required disabled="disabled">
+								</div>
+							</div>
+						</div>
+
+						<div class="message-btn">
+							<input type="button" id="info-ok" value="确认修改" class="message-button">
+						</div>
+					</form>
+				</div>
+
+				<!-- 查询平台 -->
+				<div role="tabpanel" class="tab-pane fade <{if $active == 3 or $active == 6 or $active == 7 or $active == 8 }>active in<{/if}>" id="dorm" aria-labelledby="info-tab">
+					<div class="cx-srarch-wrap">
+							<div class="cx-srarch <{if $active == 3 }>cx-srarch-active <{/if}> sspmcx">宿舍排名查询</div>
+							<div class="cx-srarch <{if $active == 7 }>cx-srarch-active <{/if}> sdfcx">水电费查询</div>
+							<div class="cx-srarch <{if $active == 6 }>cx-srarch-active <{/if}> bxcx">报修查询</div>
+							<div class="cx-srarch <{if $active == 8 }>cx-srarch-active <{/if}> wgcx">晚归查询</div>
+						</div>
+					<div class="row tablepadding">
+						<!--文明宿舍排名-->
+						<div class="sspm">
+							<form id="filter" class="navbar-form navbar-left">
+								<select class="week form-control input filter" name="week">
+									<option value="0" style="display: none;">月份</option>
+									<option value="1">1月</option>
+									<option value="2">2月</option>
+								</select>
+								<select class="year form-control input filter" name="year">
+										<option value="0" style="display: none;">年级</option>
+										<option value="2014">14级</option>
+										<option value="2015">15级</option>
+										<option value="2016">16级</option>
+										<option value="2017">17级</option>
+									</select>
+								<select class="department form-control input filter" name="department">
+									<option value="0" style="display: none;">系别</option>
+									<option value="信工系">信工系</option>
+									<option value="外语系">外语系</option>
+									<option value="药学系">药学系</option>
+									<option value="化工系">化工系</option>
+								</select>
+								<button id="filtersubmit" class="btn btn-default" type="submit" style="display: none">提交</button>
+							</form>
+
+							<form class="navbar-form navbar-right" role="search">
+								<div class="form-group">
+									<input name="search3" id="search3" type="text" class="form-control" placeholder="请输入宿舍号">
+								</div>
+								<button id="btn_search3" type="submit" class="btn btn-default">搜索</button>
+							</form>
+
+							<table class="table" id="paiming">
+								<caption class="pm">宿舍排名</caption>
+								 <tr>
+									<th>排名</th>
+									<th>月份</th>
+									<th>宿舍号</th>
+									<th>年级</th>
+									<th>系别</th>
+									<th>扣分</th>
+									<th>总分</th>
+								</tr>
+								<{foreach from=$grade item=temp}>
+									<tr>
+										<th scope="row">
+											<{$temp.top}>
+										</th>
+										<td>
+											<{$temp.weekly}>
+										</td>
+										<td>
+											<{$temp.dormitory}>
+										</td>
+										<td>
+											<{$temp.year}>
+										</td>
+										<td>
+											<{$temp.department}>
+										</td>
+										<td>
+											<{$temp.points}>
+										</td>
+										<td>
+											<{$temp.num}>
+										</td>
+									</tr>
+									<{/foreach}>
+									</tbody>								
+							</table>
+						
+
+						<nav aria-label="Page navigation" class="text-center">
+							<ul class="pagination">
+								<li>
+									<a href="?page3=<{$page3-1}>&active=3<{if $week != ''}>&week=<{$week}><{/if}><{if $department != ''}>&department=<{$department}><{/if}><{if $year != ''}>&year=<{$year}><{/if}>
+										<{if $search3 != ''}>&search3=<{$search3}><{/if}>" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<{foreach from=$upPage3 item=temp}>
+									<li>
+										<a href="?page3=<{$temp}>&active=3<{if $week != ''}>&week=<{$week}><{/if}><{if $department != ''}>&department=<{$department}><{/if}>
+										<{if $year != ''}>&year=<{$year}><{/if}><{if $search3 != ''}>&search3=<{$search3}><{/if}>">
+											<{$temp}>
+										</a>
+									</li>
+									<{/foreach}>
+										<li class="active">
+											<a href="#">
+												<{$page3}>
+											</a>
+										</li>
+										<{foreach from=$pages3 item=temp}>
+											<li>
+												<a href="?page3=<{$temp}>&active=3<{if $week != ''}>&week=<{$week}><{/if}><{if $department != ''}>&department=<{$department}><{/if}><{if $year != ''}>&year=<{$year}><{/if}>
+												<{if $search3 != ''}>&search3=<{$search3}><{/if}>">
+													<{$temp}>
+												</a>
+											</li>
+											<{/foreach}>
+
+												<li>
+													<a href="?page3=<{$page3+1}>&active=3<{if $week != ''}>&week=<{$week}><{/if}><{if $department != ''}>&department=<{$department}><{/if}><{if $year != ''}>&year=<{$year}><{/if}>
+														<{if $search3 != ''}>&search3=<{$search3}><{/if}>" aria-label="Next">
+														<span aria-hidden="true">&raquo;</span>
+													</a>
+												</li>
+							</ul>
+						</nav>
+					</div>
+					</div>
+					<!-- 报修查询 -->
+					<div class="bx">
+							<form class="navbar-form navbar-right" >
+								<div class="form-group">
+									<input  name="search6" type="text" class="form-control" placeholder="请输入宿舍号">
+								</div>
+								<button type="submit" class="btn btn-default">搜索</button>
+							</form>
+							<div id="repairinfo" class="tablepadding">
+								<br>
+								<br>
+								<br>
+								<h4 class="text-center">最新报修情况</h4>
+								<table class="table table-hover" id="tblbxExport">
+									<tr>
+										<th>宿舍号</th>
+										<th>电话号码</th>
+										<th>故障描述</th>
+										<th>登记日期</th>
+										<th>备注</th>
+									</tr>
+									<{foreach from=$repair item=temp}>
+									<tr>
+										<td><{$temp.dormitory}></td>
+										<td><{$temp.phone}></td>
+										<td><{$temp.content}></td>
+										<td><{$temp.create_time}></td>
+										<td>
+                                            <{if $temp.yon == 1}>已修<{else}>未修<{/if}>
+										</td>
+									</tr>
+									<{/foreach}>
+								</table>
+							</div>
+					</div>
+					<!-- 水电费查询 -->
+					<div class="sdf">
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group">
+								<input  name="search7" type="text" class="form-control" placeholder="请输入宿舍号">
+							</div>
+							<button type="submit" class="btn btn-default">搜索</button>
+						</form>
+						<div id="repairinfo" class="tablepadding">
+							<br>
+							<br>
+							<br>
+							<h4 class="text-center">最新水电费记录</h4>
+							<table class="table table-hover" id="tblbxExport">
+								<tr>
+									<th>宿舍号</th>
+									<th>费用</th>
+									<th>备注</th>
+								</tr>
+								<{foreach from=$cost item=temp}>
+								<tr>
+									<td><{$temp.dormitory}></td>
+									<td><{$temp.pay}></td>
+									<td>
+										<{if $temp.state == 1}>已缴<{else}>未缴<{/if}>
+									</td>
+								</tr>
+								<{/foreach}>
+							</table>
+						</div>
+					</div>
+					<!-- 晚归查询 -->
+					<div class="wg">
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group">
+								<input  name="search8" type="text" class="form-control" placeholder="请输入学号">
+							</div>
+							<button type="submit" class="btn btn-default">搜索</button>
+						</form>
+						<div id="repairinfo" class="tablepadding">
+							<br>
+							<br>
+							<br>
+							<h4 class="text-center">最新晚归记录</h4>
+							<table class="table table-hover" id="tblwgExport">
+								<tr>
+									<th>姓名</th>
+									<th>学号</th>
+									<th>宿舍号</th>
+									<th>晚归时间</th>
+								</tr>
+								<{foreach from=$outlate item=temp}>
+								<tr>
+									<td><{$temp.username}></td>
+									<td><{$temp.no}></td>
+									<td><{$temp.dormitory}></td>
+									<td><{$temp.time}></td>
+								</tr>
+								<{/foreach}>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!--登记平台-->
+				<div role="tabpanel" class="tab-pane fade" id="repair" aria-labelledby="info-tab">
+					<div class="cx-srarch-wrap">
+						<div class="cx-srarch cx-srarch-active bxdjwrap">报修登记</div>
+						<div class="cx-srarch lxdjwrap">留校登记</div>
+					</div>
+					<!-- 报修登记 -->
+					<div class="bxdj">
+						<div class="baoxiu-title">报修登记</div>
+						<div class="message-content">
+							<div class="message-content-wz" for="requir-phone">手机号码&nbsp;&nbsp;</div>
+							<div class="message-content-inp">
+								<input type="text" value="<{$info[0].phone}>" id="requir-phone" class="message-content-input" required>
+							</div>
+						</div>
+						<div class="baoxiu-reason" for="repair-con">
+							<textarea rows="3" cols="50" placeholder="请输入报修内容……" id="repair-con" required></textarea>
+						</div>
+						<div class="message-btn">
+							<button id="repair-ok" type="button" class="message-button">提交</button>
+						</div>
+					</div>
+					<!-- 留校登记 -->
+					<div class="lxdj">
+						<div class="baoxiu-title">留校登记</div>
+						<div class="message-content">
+							<div class="message-content-wz" for="liuxiao-name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							<div class="message-content-inp">
+								<input type="text" value="<{$info[0].username}>" class="message-content-input" id="liuxiao-name" required>
+							</div>
+						</div>
+						<div class="message-content">
+							<div class="message-content-wz" for="liuxiao-dep">班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							<div class="message-content-inp">
+								<input type="text" value="<{$info[0].class}>" class="message-content-input" id="liuxiao-dep" required>
+							</div>
+						</div>
+						<div class="message-content">
+							<div class="message-content-wz" for="liuxiao-phone">电话号码&nbsp;&nbsp;&nbsp;</div>
+							<div class="message-content-inp">
+								<input type="text" value="<{$info[0].phone}>" class="message-content-input" id="liuxiao-phone" required>
+							</div>
+						</div>
+	
+						<div class="message-btn">
+							<button id="liuxiao-ok" type="button" class="message-button">提交</button>
+						</div>
+					</div>
+				</div>
+
+				<!--平台公告-->
+				<div role="tabpanel" class="tab-pane fade" id="pint" aria-labelledby="info-tab">
+					<div class="baoxiu-title">平台公告</div>
+						<div id="" class="col-md-12">
+							<div class="col-md-12">
+								<ul class="list-group">
+									<{foreach from=$notice item=temp}>
+										<div style="margin:10px 0;background-color: #d6eaea;">
+											<div class="panel-body">
+												<a href="notice.php?id=<{$temp.id}>">
+													<i class="glyphicon glyphicon-link" style="padding-right: 5px"></i>
+													<{$temp.title}>
+												</a>
+											</div>
+											<li class="list-group-item  text-right">
+												<small class="answer">
+													<i class="glyphicon glyphicon-time"></i>
+													<{$temp.create_time}>
+												</small>
+											</li>
+										</div>
+										<{/foreach}>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<a href="gnggao.php">
+							   <h6 class="text-right" style="line-height: 20px;margin-right:22px;">更多</h6>
+						   </a> 
+					   </div>
+				</div>
+
+				<!--查看留言-->
+				<div role="tabpanel" class="tab-pane fade" id="message" aria-labelledby="info-tab">
+					<div class="baoxiu-title">发布留言</div>
+					<div class="fabu">
+						<div class="liuyan-content">
+							<div class="liuyan-content-wz" for="message-title">标题&nbsp;&nbsp;</div>
+							<div class="liuyan-content-inp">
+								<input type="text" class="liuyan-content-input" id="message-title" maxlength="15" required>
+							</div>
+						</div>
+						<div class="liuyan-content">
+							<div class="liuyan-content-wz" for="message-con">内容&nbsp;&nbsp;</div>
+							<div class="liuyan-content-inp">
+								<textarea rows="3" cols="50" placeholder="请输入留言内容……" id="message-con" required></textarea>
+							</div>
+						</div>
+						<div class="liuyan-btn-wrap">
+							<div class="liuyan-btn">
+								<input type="button" value="提交留言" class="liuyan-button" id="message-ok">
+							</div>
+							<a href="message.php">
+								<div class="liuyan-btn">
+									<input type="button" value="查看留言" class="liuyan-button">
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!--修改密码区-->
+				<div role="tabpanel" class="tab-pane fade" id="changepwd" aria-labelledby="info-tab">
+					<div class="row" style="height: 600px;">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3 text-center">
+								<div class="form-horizontal" style="margin-top: 100px;">
+									<h3 class="col-sm-offset-3">修改密码</h3>
+									<div class="form-group has-feedback">
+										<div class="row inputmargin" style="margin-top: 10px;">
+											<label class="control-label col-sm-3" for="opwd">旧&nbsp;密&nbsp;码</label>
+											<div class="col-sm-9">
+												<input type="password" class="form-control" id="opwd" placeholder="旧密码" maxlength="15" >
+											</div>
+										</div>
+										<div class="row inputmargin" style="margin-top: 10px;">
+											<label class="control-label col-sm-3" for="npwd">新&nbsp;密&nbsp;码</label>
+											<div class="col-sm-9">
+												<input type="password" class="form-control" id="npwd" placeholder="新密码" maxlength="15" >
+											</div>
+										</div>
+										<div class="row inputmargin" style="margin-top: 10px;">
+											<label class="control-label col-sm-3" for="zpwd">确认密码</label>
+											<div class="col-sm-9">
+												<input type="password" class="form-control" id="zpwd" placeholder="确认密码" maxlength="15" required>
+											</div>
+										</div>
+										<div class="row inputmargin col-sm-9 col-sm-offset-3" style="margin-top: 20px;">
+											<button id="pwd-ok" type="button" class="btn btn-default">确认修改</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</div>
+	<script src="js/vue.js"></script>
+	<script src="js/main/manage_user.js"></script>
+	<!--<script src="js/student.js"></script>-->
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/layer.min.js"></script>
+    <script src="js/doT.min.js"></script>
+    <script src="js/summernote.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/summernote-zh-CN.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.table2excel.js" type="text/javascript" charset="utf-8"></script>
+     <script type="text/x-dot-template" id="repair3-tpl">
+                                            {{for(var x in it){ }}
+                                            <tr>
+                                                <th scope="row">{{=it[x].top}}</th>
+                                                <td>{{=it[x].weekly}}</td>
+                                                <td>{{=it[x].dormitory}}</td>
+                                                <td>{{=it[x].year}}</td>
+                                                <td>{{=it[x].department}}</td>
+                                                <td><{$temp.points}></td>
+                                                <td>{{=it[x].num}}</td>
+                                                
+                                            </tr>
+                            {{ } }}
+    </script>
+	<script type="text/javascript">
+		$(".sspmcx").click(function(){
+			$(".sspm").css("display","block");
+			$(".sdf").css("display","none");
+			$(".bx").css("display","none");
+			$(".wg").css("display","none");
+			$(".sspmcx").addClass("cx-srarch-active");
+			$(".sdfcx").removeClass("cx-srarch-active");
+			$(".bxcx").removeClass("cx-srarch-active");
+			$(".wgcx").removeClass("cx-srarch-active");
+		})
+		$(".bxcx").click(function(){
+			$(".sspm").css("display","none");
+			$(".sdf").css("display","none");
+			$(".bx").css("display","block");
+			$(".wg").css("display","none");
+			$(".sspmcx").removeClass("cx-srarch-active");
+			$(".bxcx").addClass("cx-srarch-active");
+			$(".sdfcx").removeClass("cx-srarch-active");
+			$(".wgcx").removeClass("cx-srarch-active");
+		})
+		$(".sdfcx").click(function(){
+			$(".sspm").css("display","none");
+			$(".sdf").css("display","block");
+			$(".bx").css("display","none");
+			$(".wg").css("display","none");
+			$(".sspmcx").removeClass("cx-srarch-active");
+			$(".bxcx").removeClass("cx-srarch-active");
+			$(".sdfcx").addClass("cx-srarch-active");
+			$(".wgcx").removeClass("cx-srarch-active");
+		})
+		$(".wgcx").click(function(){
+			$(".sspm").css("display","none");
+			$(".sdf").css("display","none");
+			$(".bx").css("display","none");
+			$(".wg").css("display","block");
+			$(".sspmcx").removeClass("cx-srarch-active");
+			$(".bxcx").removeClass("cx-srarch-active");
+			$(".sdfcx").removeClass("cx-srarch-active");
+			$(".wgcx").addClass("cx-srarch-active");
+		})
+		$(".bxdjwrap").click(function(){
+			$(".lxdj").css("display","none");
+			$(".bxdj").css("display","block");
+			$(".lxdjwrap").removeClass("cx-srarch-active");
+			$(".bxdjwrap").addClass("cx-srarch-active");
+		})
+		$(".lxdjwrap").click(function(){
+			$(".bxdj").css("display","none");
+			$(".lxdj").css("display","block");
+			$(".bxdjwrap").removeClass("cx-srarch-active");
+			$(".lxdjwrap").addClass("cx-srarch-active");
+		})
+		var active=<{$active}>;
+		// alert(active);
+		if(active == 3){
+			$(".sspmcx").click();
+		}else if(active == 7){
+			$(".sdfcx").click();
+		}else if(active == 6){
+			$(".bxcx").click();
+		}else if(active == 8){
+			$(".wgcx").click();
+		}
+
+
+		function chage() {
+			//x上限，y下限
+			var x = 3;
+			var y = 1;
+			var rand = parseInt(Math.random() * (x - y + 1) + y);
+			$("#pairtable1").hide();
+			$("#pairtable2").hide();
+			$("#pairtable3").hide();
+
+			var display = $("#pairtable" + rand).css('display');
+			if (display == 'none') {
+
+				$("#pairtable" + rand).fadeIn(1500);
+
+			}
+			else {
+				$("#pairtable" + rand).fadeIn(1500);
+				if (rand < 3)
+					$("#pairtable" + (rand + 1)).fadeOut(1500);
+				else
+					$("#pairtable" + 1).fadeOut(1500);
+			}
+		}
+		$(document).ready(function () {
+			//textarea字数限制
+			$('textarea').each(function () {
+				var ta = $(this),
+					p = ta.parent(),
+					ml = parseInt(ta.attr('maxlength')),
+					v = ta.val(),
+					h = ta.attr('placeholder');
+				if (v == h) v = '';
+				if (h && ml) {
+					//var sp = '<span style="bottom: 10px;position: absolute;right: -10px;">'+v.length+'/'+ml+'</span>';
+					p.css({ 'position': 'relative' });
+					//ta.before(sp);
+					ta.bind('click keyup', function () {
+						var m = $(this),
+							v1 = m.val();
+						if (v1.length > ml) {
+							m.val(v1.substring(0, ml))
+						}
+						//m.prev().text(m.val().length + '/' + ml);
+						$("#xxxx").text(ml - m.val().length);
+					});
+				}
+			});
+			//提交报修申请
+			$("#repair-ok").click(function () {
+				if ($("#repair-con").val() == "" || $("#requir-phone").val() == "") {
+					layer.msg("请填写每一项！");
+				}
+				else {
+					$.ajax({
+						url: "background/save.php",
+						type: 'POST',
+						data: {
+							// dormitory: $("#repair-dorm").val(),
+							phone: $("#requir-phone").val(),
+							content: $("#repair-con").val()
+						},
+						success: function (result) {
+							//var result = $.parseJSON(result);
+							if (result == 1)//判断0还是1
+							{
+								layer.msg("提交成功！");
+							}
+							else {
+								layer.msg(result);
+							}
+
+						},
+						error: function () {
+							layer.msg("数据发送失败，请检查网络链接！");
+						}
+					});
+				}
+
+			});
+			//提交留校登记
+			$("#liuxiao-ok").click(function () {
+				if ($("#liuxiao-phone").val() == ""||$("#liuxiao-name").val() == ""||$("#liuxiao-dep").val() == "") {
+					layer.msg("请填写每一项！");
+				}
+				else {
+					$.ajax({
+						url: "background/save.php?id=5",
+						type: 'POST',
+						data: {
+							username: $("#liuxiao-name").val(),
+							department: $("#liuxiao-dep").val(),
+							phone: $("#liuxiao-phone").val(),
+						},
+						success: function (result) {
+							//var result = $.parseJSON(result);
+							if (result == 1)//判断0还是1
+							{
+								layer.msg("提交成功！");
+							}
+							else {
+								layer.msg(result);
+							}
+
+						},
+						error: function () {
+							layer.msg("数据发送失败，请检查网络链接！");
+						}
+					});
+				}
+
+			});
+			chage();
+			$("#changepair").click(function () {
+				chage();
+
+			});
+			function chage() {
+				//x上限，y下限
+				var x = 3;
+				var y = 1;
+				var rand = parseInt(Math.random() * (x - y + 1) + y);
+				$("#pairtable1").hide();
+				$("#pairtable2").hide();
+				$("#pairtable3").hide();
+
+				var display = $("#pairtable" + rand).css('display');
+				if (display == 'none') {
+
+					$("#pairtable" + rand).fadeIn(1500);
+
+				}
+				else {
+					$("#pairtable" + rand).fadeIn(1500);
+					if (rand < 3)
+						$("#pairtable" + (rand + 1)).fadeOut(1500);
+					else
+						$("#pairtable" + 1).fadeOut(1500);
+				}
+			}
+			//提交留言信息
+			$("#message-ok").click(function () {
+				if ($("#message-title").val() == "" || $("#message-con").val() == "") {
+					layer.msg("请填写每一项！");
+				}
+				else {
+					$.ajax({
+						url: "background/save.php?id=2",
+						type: 'POST',
+						data: {
+							title: $("#message-title").val(),
+							content: $("#message-con").val(),
+						},
+						success: function (result) {
+							if (result == 1)//判断0还是1
+							{
+								layer.msg("提交成功！");
+								location.load();
+							}
+							else {
+								layer.msg(result);
+							}
+
+						},
+						error: function () {
+							layer.msg("数据发送失败，请检查网络链接！");
+						}
+					});
+				}
+
+			});
+			//提交个人信息修改
+			$("#info-ok").click(function () {
+				if ($("#info-id").val() == "" || $("#info-name").val() == "" || $("#info-class").val() == "" || $("#info-dorm").val() == "" ) {
+					layer.msg("请填写每一项！");
+				}
+				else {
+					$.ajax({
+						url: "background/update.php",
+						type: 'GET',
+						data: {
+							table: "users",
+							id: "<{$info[0].id}>",
+							no: $("#info-id").val(),
+							username: $("#info-name").val(),
+							department: $("#info-department").val(),
+							class: $("#info-class").val(),
+							dates: $("#info-year").val(),
+							sex: $("#info-sex").val(),
+							dormitory: $("#info-dorm").val(),
+						},
+						success: function (r) {
+							var result = $.parseJSON(r);
+
+							if (result.result)//判断0还是1
+							{
+								layer.msg("提交成功！");
+							}
+							else {
+								layer.msg(result.mes);
+							}
+
+						},
+						error: function () {
+							layer.msg("数据发送失败，请检查网络链接！");
+						}
+					});
+				}
+
+			});
+			//修改密码
+			$("#pwd-ok").click(function () {
+				if ($("#opwd").val() == "" || $("#zpwd").val() == "" || $("#npwd").val() == "") {
+					layer.msg("请填写每一项哦！");
+				} else {
+					$.ajax({
+						url: "background/xiugai.php",
+						type: 'POST',
+						data: {
+							oldpw: $("#opwd").val(),
+							newpw: $("#npwd").val(),
+							newpw2: $("#zpwd").val()
+						},
+						success: function (result) {
+							if (result == 1)//判断0还是1
+							{
+								layer.msg("提交成功！");
+							}
+							else {
+								layer.msg(result);
+							}
+
+						},
+						error: function () {
+							layer.msg("数据发送失败，请检查网络链接！");
+						}
+					});
+				}
+			});
+			//过滤评分
+			//初始化
+			var sortweek= <{if $week != ''}><{$week}><{else}>0<{/if}>,sortyear = <{if $year != ''}>"<{$year}>"<{else}>0<{/if}>,sortdepartment = <{if $department != ''}>"<{$department}>"<{else}>0<{/if}>,sortsex =  <{if $sex != ''}>"<{$sex}>"<{else}>0<{/if}>,sortpoints = 0,sortsort = <{if $sort != ''}>"<{$sort}>"<{else}>0<{/if}>;
+
+
+
+		$(".week.form-control.input.filter").val(sortweek);
+		$(".year.form-control.input.filter").val(sortyear);
+		$(".department.form-control.input.filter").val(sortdepartment);
+		$(".sex.form-control.input.filter").val(sortsex);
+		$(".points.form-control.input.filter").val(sortpoints);
+		$(".sort.form-control.input.filter").val(sortsort);
+		//选择框改变事件
+		$(".form-control.input.filter").change(function () {
+			$("#filter").submit();
+		}
+		);
+
+			});
+
+	</script>
+</body>
+
+</html>

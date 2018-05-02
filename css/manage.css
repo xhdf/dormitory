@@ -1,0 +1,310 @@
+body{
+    width: 100%;
+    height: 100%;
+    background: #EEF3FA;
+}
+.repair_main_wrap{
+    width:1120px;
+    margin: 0 auto;
+    background: #EFEFEF;
+}
+.repair_left_wrap{
+    display: inline-block;
+    position: relative;
+    width: 170px;
+    height:630px;
+    background: #fff;
+}
+.repair_title{
+    padding: 30px 0 20px;
+    text-align: center;
+    font-size: 12px;
+    color:#A561D8;
+}
+.repair_icon{
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+}
+.repair_icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.repair_name{
+    margin: 10px 0 40px;
+    text-align: center;
+    font-size: 14px;
+}
+.repair_item{
+    position: relative;
+    display: flex;
+    height: 45px;
+    font-size: 12px;
+    cursor: pointer;
+    border-top: 1px solid #DEDEDE;
+    border-bottom: 1px solid #DEDEDE;
+}
+.repair_item_active{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 5px;
+    height: 45px;
+    background: #A561D8;
+}
+.repair_item_icon1{
+    flex:0 0 25px;
+    height: 28px;
+    margin: 13px 0 0 20px;
+    text-align: center;
+}
+.repair_item_icon1 img{
+    width: 50%;
+    height: 50%;
+}
+.repair_item_wz{
+    flex: 1;
+    line-height: 45px;
+}
+.repair_item_icon2{
+    flex:0 0 25px;
+    height: 28px;
+    margin-top: 15px;
+}
+.repair_item_icon2 img{
+    width: 55%;
+    height: 55%;
+}
+.repair_exit_login{
+    position: absolute;
+    bottom: 35px;
+    left: 22px;
+    font-size: 12px;
+    color: #B5B5B5;
+}
+.torrow{
+    margin-right: 15px;
+}
+
+.repair_right_wrap{
+    display: inline-block;
+    margin-left: 20px;
+    height: 630px;
+    vertical-align: top;
+}
+.searchinp{
+    position: relative;
+    display: inline-block;
+    margin: 40px 10px 0 0;
+}
+.searchInp{
+    width: 490px;
+    height: 30px;
+    text-indent: 40px;
+    border: none;
+}
+.searchbut{
+    display: inline-block;
+}
+.searchBut{
+    width: 70px;
+    height: 32px;
+    border: none;
+    color: #fff;
+    background: #834BD0;
+}
+.seaicon{
+    position: absolute;
+    left: 10px;
+    top: 7px;
+}
+.problem_kui{
+    position: relative;
+    display: inline-block;
+    margin: 30px 20px 0 0 ;
+}
+.problem-fan{
+    position: absolute;
+    top: 30px;
+    left: 0;
+}
+.problem{
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid #DBDBDB;
+    background: #fff;
+}
+.problemKui{
+    width: 120px;
+    height: 30px;
+    border: none;
+    color: #fff;
+    background: #834BD0;
+}
+.dellte{
+    display: inline-block;
+}
+.dellTe{
+    width: 75px;
+    height: 30px;
+    border: none;
+    color: #fff;
+    background: #666666;
+}
+.date{
+    width: 260px;
+    height: 25px;
+    margin-top: 15px ;
+    border: none;
+}
+.sx{
+    width: 60px;
+    height: 25px;
+    border: none;
+    color: #fff;
+    background: #834BD0;
+}
+.footactions{
+    display: inline-block;
+}
+.repair_right_wrap{
+    display: inline-block;
+    width: 920px;
+}
+.message-wrap{
+    /*display: none;*/
+}
+.message-title{
+    width: 100%;
+    margin-top: 80px;
+    color: #6B6B6B;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.message-content-wrap{
+    width: 100%;
+    margin-top: 20px;
+}
+.message-content{
+    display: flex;
+    margin: 10px 0;
+    justify-content:center;
+    align-items: center;
+}
+.message-content-input{
+    width: 150px;
+    height: 26px;
+    border-radius: 5px;
+    text-indent: 10px;
+    border: 1px solid #999999;
+}
+.message-btn{
+    margin:30px 0  0 375px; 
+}
+.message-button{
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    color: #fff;
+    background: #834BD0;
+}
+.btn{
+    color: #fff;
+    background: #834BD0;    
+}
+.sushe{
+    display: none;
+}
+.pm{
+    text-align: center;
+    color: #000;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.pagination-wrap{
+    position: fixed;
+    bottom:0;
+    left: 50%;
+    margin-left: 100px;
+    transform: translate(-50%);
+}
+.baoxiu{
+    display: none;
+}
+.baoxiu-title{
+    width: 100%;
+    margin: 80px 0 15px 0;
+    color: #6B6B6B;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.baoxiu-reason{
+   text-align: center;
+}
+.liuxiao{
+    display: none;
+}
+.gonggao{
+    display: none;
+}
+.liuyan{
+    display: none;
+}
+.liuyan-title{
+     width: 100%;
+    margin: 15px 0;
+    color: #6B6B6B;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.liuyan-content{
+    display: flex;
+    margin: 10px 0;
+    justify-content:center;
+    align-items: center;
+}
+.liuyan-content-input{
+    width: 370px;
+    height: 26px;
+    text-indent: 10px;
+    border: 1px solid #999999;
+}
+.liuyan-btn{
+     margin-left:275px; 
+}
+.liuyan-button{
+    width: 75px;
+    height: 30px;
+    border: 1px solid #999999;
+}
+.liuyan-message{
+    margin-top: 60px;
+}
+.quxg{
+    margin-top: 30px;
+    margin-left: 115px;
+}
+.cx-srarch{
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 10px;
+    cursor: pointer;
+    background: #fff;
+}
+.cx-srarch-active{
+    color: #fff;
+    background: #834BD0;
+}
+.sdf,.wg,.bx,.lx,.wgtj1{
+    display: none;
+}
